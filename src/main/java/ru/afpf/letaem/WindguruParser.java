@@ -53,7 +53,6 @@ public class WindguruParser extends TimerTask {
         InputStream is = null;
         BufferedReader br;
         String line;
-
         try {
             url = new URL("https://old.windguru.cz/ru/index.php?sc=743917&sty=m_spot");
             is = url.openStream();  // throws an IOException
@@ -65,7 +64,7 @@ public class WindguruParser extends TimerTask {
             int tableStart = allLine.indexOf("var wg_fcst_tab_data_1");
             if (tableStart >0) {
                 String resultStr1 = allLine.substring(tableStart + 1, allLine.indexOf("}}}}", tableStart));
-       //         System.out.println(resultStr1);
+       //         Wind speed in knot ~ m/s*2
                 String winspd = resultStr1.substring(resultStr1.indexOf("WINDSPD\":[") + 10, resultStr1.indexOf("]", resultStr1.indexOf("WINDSPD\":[")));
                 List<String> windSpeed = Arrays.asList(winspd.split(","));
 
@@ -73,6 +72,7 @@ public class WindguruParser extends TimerTask {
                     windSpeedInt.add((int)(parseFloat(windSpeed.get(i))+0.5));
                 }
 
+       //         wind direction in degrees
                 String windir = resultStr1.substring(resultStr1.indexOf("WINDDIR\":[") + 10, resultStr1.indexOf("]", resultStr1.indexOf("WINDDIR\":[")));
                 List<String> windDir = Arrays.asList(windir.split(","));
 
@@ -80,6 +80,7 @@ public class WindguruParser extends TimerTask {
                     windDirInt.add(parseInt(windDir.get(i)));
                 }
 
+       //         day of week - integer
                 String weekday = resultStr1.substring(resultStr1.indexOf("hr_weekday\":[") + 13, resultStr1.indexOf("]", resultStr1.indexOf("hr_weekday\":[")));
                 List<String> hrWeekday = Arrays.asList(weekday.split(","));
 
@@ -87,6 +88,7 @@ public class WindguruParser extends TimerTask {
                     weekdayInt.add(parseInt(hrWeekday.get(i)));
                 }
 
+       //
                 String hours = resultStr1.substring(resultStr1.indexOf("hours\":[") + 8, resultStr1.indexOf("]", resultStr1.indexOf("hours\":[")));
                 List<String> hoursS = Arrays.asList(hours.split(","));
 
@@ -96,11 +98,16 @@ public class WindguruParser extends TimerTask {
                 String smern = resultStr1.substring(resultStr1.indexOf("SMERN\":[") + 8, resultStr1.indexOf("]", resultStr1.indexOf("SMERN\":[")));
                 List<String> smernS = Arrays.asList(smern.split(","));
 
+
+        //        wind boost in knot ~m/s*2
                 for (int i = 0; i < smernS.size(); i++) {
                     String s = smernS.get(i);
                     s = s.replace("\"","");
                      smernInt.add(parseInt(s));
                 }
+
+
+       //         rain or snow or ...
                 String rain = resultStr1.substring(resultStr1.indexOf("APCP\":[") + 7, resultStr1.indexOf("]", resultStr1.indexOf("APCP\":[")));
                 List<String> rainn = Arrays.asList(rain.split(","));
 
@@ -111,14 +118,13 @@ public class WindguruParser extends TimerTask {
 
                 }
 
-                System.out.println(windSpeedInt);
-                System.out.println(windDirInt);
-                System.out.println(weekdayInt);
-                System.out.println(hourseInt);
-                System.out.println(smernInt);
-                System.out.println(rainFloat);
+//                System.out.println(windSpeedInt);
+//                System.out.println(windDirInt);
+//                System.out.println(weekdayInt);
+//                System.out.println(hourseInt);
+//                System.out.println(smernInt);
+//                System.out.println(rainFloat);
             }
-//
 
             else System.out.println("Не найдена таблица");
         } catch (MalformedURLException mue) {
@@ -129,7 +135,7 @@ public class WindguruParser extends TimerTask {
             try {
                 if (is != null) is.close();
             } catch (IOException ioe) {
-                // nothing to see here
+
             }
         }
     }
