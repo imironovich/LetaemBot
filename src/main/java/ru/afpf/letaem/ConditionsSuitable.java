@@ -35,38 +35,41 @@ class ConditionsSuitable extends TimerTask {
 
             for (int i = 12; i < 8 * 8; i = i + 8) {
                 letnaya = (rainFloat.get(i) == 0)&&(rainFloat.get(i + 1) == 0)&&(windSpeedInt.get(i) > 8 | 16 > windSpeedInt.get(i))&&(windSpeedInt.get(i + 1) > 8 | 16 > windSpeedInt.get(i + 1))&&(smernInt.get(i) < 20)&&(smernInt.get(i + 1) < 20);
-                if ((letnaya && 200 < windDirInt.get(i) && windDirInt.get(i) > 160 && 200 < windDirInt.get(i + 1) && windDirInt.get(i) > 160))
-//                    System.out.println(" Летная погода " + days.get(weekdayInt.get(i)) + " утром в Желохово");
-                bot.sendMess(192211047, " Летная погода " + days.get(weekdayInt.get(i)) + " утром в Желохово");
-                if ((letnaya && 290 < windDirInt.get(i) && windDirInt.get(i) > 200 && 290 < windDirInt.get(i + 1) && windDirInt.get(i) > 250))
-//                    System.out.println("Летная погода " + days.get(weekdayInt.get(i)) + " утром в Вороново");
-                bot.sendMess(192211047, " Летная погода " + days.get(weekdayInt.get(i)) + " утром в Вороново");
-                else nomorning = true;
+                if ((letnaya && 200 < windDirInt.get(i) && windDirInt.get(i) > 160 && 200 < windDirInt.get(i + 1) && windDirInt.get(i) > 160)){
+                   System.out.println(" Летная погода " + days.get(weekdayInt.get(i)) + " утром в Желохово");
+                   bot.sendMess(192211047, " Летная погода " + days.get(weekdayInt.get(i)) + " утром в Желохово");}
+                if ((letnaya && 290 < windDirInt.get(i) && windDirInt.get(i) > 200 && 290 < windDirInt.get(i + 1) && windDirInt.get(i) > 250)){
+                   System.out.println("Летная погода " + days.get(weekdayInt.get(i)) + " утром в Вороново");
+                   bot.sendMess(192211047, " Летная погода " + days.get(weekdayInt.get(i)) + " утром в Вороново");}
+                else nomorning = false;
 
             }
 
             for (int i = 13; i < 8 * 8; i = i + 8) {
                 letnaya = (rainFloat.get(i) == 0)&&(rainFloat.get(i + 1) == 0)&&(windSpeedInt.get(i) > 8 | 16 > windSpeedInt.get(i))&&(windSpeedInt.get(i + 1) > 8 | 16 > windSpeedInt.get(i + 1))&&(smernInt.get(i) < 20)&&(smernInt.get(i + 1) < 20);
-                if ((letnaya && 200 < windDirInt.get(i) && windDirInt.get(i) > 160 && 200 < windDirInt.get(i + 1) && windDirInt.get(i) > 160))
-//                    System.out.println(" Летная погода " + days.get(weekdayInt.get(i)) + " днём в Желохово");
-                bot.sendMess(192211047, " Летная погода " + days.get(weekdayInt.get(i)) + " днём в Желохово");
-                if ((letnaya && 290 < windDirInt.get(i) && windDirInt.get(i) > 200 && 290 < windDirInt.get(i + 1) && windDirInt.get(i) > 250))
- //                   System.out.println("Летная погода " + days.get(weekdayInt.get(i)) + " днём в Вороново");
-                bot.sendMess(192211047, " Летная погода " + days.get(weekdayInt.get(i)) + " днём в Вороново");
-                else noday = true;
+                if ((letnaya && 200 < windDirInt.get(i) && windDirInt.get(i) > 160 && 200 < windDirInt.get(i + 1) && windDirInt.get(i) > 160)){
+                    System.out.println(" Летная погода " + days.get(weekdayInt.get(i)) + " днём в Желохово");
+                    bot.sendMess(192211047, " Летная погода " + days.get(weekdayInt.get(i)) + " днём в Желохово");}
+                if ((letnaya && 290 < windDirInt.get(i) && windDirInt.get(i) > 200 && 290 < windDirInt.get(i + 1) && windDirInt.get(i) > 250)){
+                    System.out.println("Летная погода " + days.get(weekdayInt.get(i)) + " днём в Вороново");
+                    bot.sendMess(192211047, " Летная погода " + days.get(weekdayInt.get(i)) + " днём в Вороново");}
+                else noday = false;
             }
 
             for (int i = 14; i < 8 * 8; i = i + 8) {
                 letnaya = (rainFloat.get(i) == 0)&&(rainFloat.get(i + 1) == 0)&&(windSpeedInt.get(i) > 8 | 16 > windSpeedInt.get(i))&&(windSpeedInt.get(i + 1) > 8 |16 > windSpeedInt.get(i + 1))&&(smernInt.get(i) < 20)&&(smernInt.get(i + 1) < 20);
-                if ((letnaya && 200 < windDirInt.get(i) && windDirInt.get(i) > 160 && 200 < windDirInt.get(i + 1) && windDirInt.get(i) > 160))
-//                    System.out.println(" Летная погода " + days.get(weekdayInt.get(i)) + " после обеда в Желохово");
-                bot.sendMess(192211047, " Летная погода " + days.get(weekdayInt.get(i)) + " после обеда в Желохово");
-                if ((letnaya && 290 < windDirInt.get(i) && windDirInt.get(i) > 200 && 290 < windDirInt.get(i + 1) && windDirInt.get(i) > 250))
-//                    System.out.println("Летная погода " + days.get(weekdayInt.get(i)) + " после обеда в Вороново");
-                bot.sendMess(192211047, " Летная погода " + days.get(weekdayInt.get(i)) + " после обеда в Вороново");
-                else noevening = true;
+                if ((letnaya && 200 < windDirInt.get(i) && windDirInt.get(i) > 160 && 200 < windDirInt.get(i + 1) && windDirInt.get(i) > 160)){
+                    System.out.println(" Летная погода " + days.get(weekdayInt.get(i)) + " после обеда в Желохово");
+                    bot.sendMess(192211047, " Летная погода " + days.get(weekdayInt.get(i)) + " после обеда в Желохово");}
+                if ((letnaya && 290 < windDirInt.get(i) && windDirInt.get(i) > 200 && 290 < windDirInt.get(i + 1) && windDirInt.get(i) > 250)){
+                    System.out.println("Летная погода " + days.get(weekdayInt.get(i)) + " после обеда в Вороново");
+                    bot.sendMess(192211047, " Летная погода " + days.get(weekdayInt.get(i)) + " после обеда в Вороново");}
+                else noevening = false;
             }
 
-            if (nomorning && noday && noevening) bot.sendMess(192211047, "Ближайшую неделю лётных дней на наших горках не предвидится :-(");
+            if (nomorning && noday && noevening){
+                System.out.println("Ближайшую неделю лётных дней на наших горках не предвидится :-(");
+                bot.sendMess(192211047, "Ближайшую неделю лётных дней на наших горках не предвидится :-(");
+            }
         }
     }
